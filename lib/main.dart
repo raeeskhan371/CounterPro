@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:student_managemnet/Provider/TimerProvider.dart';
 import 'package:student_managemnet/Screens/CounterApp.dart';
-import 'package:student_managemnet/data/Counter_Provider.dart';
+import 'package:student_managemnet/Provider/Counter_Provider.dart';
+import 'package:student_managemnet/Screens/Timer_Screen.dart';
 
 void main() {
   runApp(
-    ChangeNotifierProvider(
-      create: (context) => CounterProvider(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => CounterProvider()),
+        ChangeNotifierProvider(create: (_) => Timerprovider()),
+      ],
       child: MyApp(),
     ),
   );
@@ -22,7 +27,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
-      home: CounterApp(),
+      home: TimerScreen(),
     );
   }
 }
