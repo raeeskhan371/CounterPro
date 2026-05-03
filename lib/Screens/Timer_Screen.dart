@@ -44,9 +44,27 @@ class _TimerScreenState extends State<TimerScreen> {
                       int.tryParse(min.text) ?? 0,
                       int.tryParse(hour.text) ?? 0,
                     );
-                    context.read<Timerprovider>().startTimer();
+                    context.read<Timerprovider>().timerStart();
                   },
-                  child: Text("setTimer"),
+                  child: Text("SetTimer"),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    context.read<Timerprovider>().pauseTimer();
+                  },
+                  child: Text("PasueTimer"),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    context.read<Timerprovider>().resumeTimer();
+                  },
+                  child: Text("ResumeTimer"),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    context.read<Timerprovider>().timerStart();
+                  },
+                  child: Text("timeStart"),
                 ),
               ],
             ),
