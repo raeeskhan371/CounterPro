@@ -7,6 +7,7 @@ class Timerprovider with ChangeNotifier {
   int _hour = 0;
   int _mint = 0;
   int _secodes = 0;
+
   bool isRunning = true;
   Timer? timer;
   Color containerColor = Colors.white;
@@ -16,10 +17,11 @@ class Timerprovider with ChangeNotifier {
   int get getSecondes => _secodes;
 
   // set Timer Function
-  void setTimer(int h, int m, int s) {
-    _hour = h;
-    _mint = m;
-    _secodes = s;
+  void setTimer(int s, int m, int h) {
+    int totalSeconds = (h * 3600) + (m * 60) + s;
+    _hour = totalSeconds ~/ 3600;
+    _mint = (totalSeconds % 3600) ~/ 60;
+    _secodes = totalSeconds % 60;
 
     notifyListeners();
   }

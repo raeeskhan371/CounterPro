@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:student_managemnet/Provider/TimerProvider.dart';
+import 'package:student_managemnet/Screens/Timer_Screen.dart';
 
 class MyTimerPro extends StatefulWidget {
   const MyTimerPro({super.key});
@@ -163,6 +164,16 @@ class _MyTimerProState extends State<MyTimerPro> {
                     ),
                   ),
                 ],
+              ),
+
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => TimerScreen()),
+                  );
+                },
+                child: Text("Set Timer"),
               ),
             ],
           ),
