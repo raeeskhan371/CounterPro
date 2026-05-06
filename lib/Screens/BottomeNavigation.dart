@@ -14,7 +14,7 @@ class BottomeNavgationCounterPro extends StatefulWidget {
 class _BottomeNavgationCounterProState
     extends State<BottomeNavgationCounterPro> {
   int myIndex = 0;
-  List<Widget> Screens = [CounterApp(), StopWatch(), Timerpro()];
+  List<Widget> Screens = [CounterApp(), Timerpro(), StopWatch()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(

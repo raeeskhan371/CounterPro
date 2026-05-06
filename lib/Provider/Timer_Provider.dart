@@ -44,6 +44,7 @@ class TimerProvider with ChangeNotifier {
           _secodes--;
         }
         timerColor();
+
         notifyListeners();
       });
 
@@ -94,13 +95,52 @@ class TimerProvider with ChangeNotifier {
   void timerColor() {
     int remaining = (_hour * 3600) + (_mint * 60) + _secodes;
     double percentage = (remaining / totalSeconds) * 100;
-    if (percentage > 80) {
-      containerColor = Colors.green;
-    } else if (percentage > 50) {
-      containerColor = Colors.orange;
-    } else {
-      containerColor = Colors.red;
-    }
+    if (percentage > 0) {
+      containerColor = Colors.red.withOpacity(1);
+      if (percentage > 10) {
+        containerColor = Colors.red.withOpacity(0.8);
+        if (percentage > 20) {
+          containerColor = Colors.red.withOpacity(0.6);
+          if (percentage > 40) {
+            containerColor = Colors.red.withOpacity(0.4);
+            if (percentage > 49) {
+              containerColor = Colors.red.withOpacity(0.2);
+              if (percentage > 50) {
+                containerColor = Colors.green;
+              }
+            } else
+              containerColor = Colors.red;
+          } else
+            containerColor = Colors.red;
+        } else
+          containerColor = Colors.red;
+      } else
+        containerColor = Colors.red;
+    } else
+      containerColor = Colors.grey;
     notifyListeners();
   }
 }
+
+// void timerColor() {
+//   int remaining = (_hour * 3600) + (_mint * 60) + _secodes;
+//   double percentage = (remaining / totalSeconds) * 100;
+//   if (percentage > 50) {
+//     containerColor = Colors.green;
+//   } else if (percentage < 50) {
+//     containerColor = Colors.red.withOpacity(0.3);
+//   } else if (percentage < 40) {
+//     containerColor = Colors.red.withOpacity(0.5);
+//   } else if (percentage < 30) {
+//     containerColor = Colors.red.withOpacity(0.6);
+//   } else if (percentage < 20) {
+//     containerColor = Colors.red.withOpacity(0.7);
+//   } else if (percentage < 10) {
+//     containerColor = Colors.red.withOpacity(0.8);
+//   } else if (percentage > 0) {
+//     containerColor = Colors.red.withOpacity(1);
+//   } else if (percentage == 0) {
+//     containerColor = Colors.grey;
+//   }
+//   notifyListeners();
+// }

@@ -41,7 +41,7 @@ class Timerpro extends StatelessWidget {
                   ),
 
                   Text(
-                    "Counter",
+                    "Timer Pro",
                     style: GoogleFonts.poppins(
                       fontSize: 30,
                       fontWeight: FontWeight.w500,
@@ -82,7 +82,7 @@ class Timerpro extends StatelessWidget {
                       color: Colors.white,
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.grey.withOpacity(0.1),
+                          color: value.containerColor.withOpacity(1),
                           offset: Offset(4, 8),
                           blurRadius: 20,
                           spreadRadius: 5,
