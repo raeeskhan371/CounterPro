@@ -2,7 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:student_managemnet/Provider/TimerProvider.dart';
+import 'package:student_managemnet/Provider/StopWatch_Provider.dart';
+import 'package:student_managemnet/Provider/Timer_Provider.dart';
+import 'package:student_managemnet/Screens/Set_Timer.dart';
 
 class Timerpro extends StatelessWidget {
   const Timerpro({super.key});
@@ -70,7 +72,7 @@ class Timerpro extends StatelessWidget {
               SizedBox(height: 50),
 
               // Main Circle
-              Consumer<Timerprovider>(
+              Consumer<TimerProvider>(
                 builder: (context, value, child) {
                   return Container(
                     height: 300,
@@ -80,7 +82,7 @@ class Timerpro extends StatelessWidget {
                       color: Colors.white,
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black.withOpacity(0.1),
+                          color: Colors.grey.withOpacity(0.1),
                           offset: Offset(4, 8),
                           blurRadius: 20,
                           spreadRadius: 5,
@@ -110,7 +112,7 @@ class Timerpro extends StatelessWidget {
                           padding: const EdgeInsets.only(top: 80),
                           child: GestureDetector(
                             onTap: () {
-                              context.read<Timerprovider>().reset();
+                              context.read<StopWatchProvider>().stopReset();
                             },
                             child: Container(
                               decoration: BoxDecoration(
@@ -161,7 +163,7 @@ class Timerpro extends StatelessWidget {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          context.read<Timerprovider>().startTimer();
+                          context.read<TimerProvider>().startTimer();
                         },
                         child: Container(
                           width: 100,
@@ -196,7 +198,7 @@ class Timerpro extends StatelessWidget {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          context.read<Timerprovider>().Pause();
+                          context.read<TimerProvider>().pauseTimer();
                         },
                         child: Container(
                           width: 100,
@@ -231,7 +233,7 @@ class Timerpro extends StatelessWidget {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          context.read<Timerprovider>().resume();
+                          context.read<TimerProvider>().resumeTimer();
                         },
                         child: Container(
                           width: 100,
@@ -295,6 +297,15 @@ class Timerpro extends StatelessWidget {
                     ],
                   ),
                 ),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => TimerScreen()),
+                  );
+                },
+                child: Text("Set Timer"),
               ),
             ],
           ),

@@ -2,17 +2,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:student_managemnet/Provider/TimerProvider.dart';
-import 'package:student_managemnet/Screens/Timer_Screen.dart';
+import 'package:student_managemnet/Provider/StopWatch_Provider.dart';
+import 'package:student_managemnet/Screens/Set_Timer.dart';
 
-class MyTimerPro extends StatefulWidget {
-  const MyTimerPro({super.key});
+class StopWatch extends StatefulWidget {
+  const StopWatch({super.key});
 
   @override
-  State<MyTimerPro> createState() => _MyTimerProState();
+  State<StopWatch> createState() => _StopWatchState();
 }
 
-class _MyTimerProState extends State<MyTimerPro> {
+class _StopWatchState extends State<StopWatch> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +26,7 @@ class _MyTimerProState extends State<MyTimerPro> {
               SizedBox(height: 50),
 
               // Main Circle
-              Consumer<Timerprovider>(
+              Consumer<StopWatchProvider>(
                 builder: (context, value, child) {
                   return Container(
                     height: 300,
@@ -62,7 +62,7 @@ class _MyTimerProState extends State<MyTimerPro> {
                           padding: const EdgeInsets.only(top: 80),
                           child: GestureDetector(
                             onTap: () {
-                              value.reset();
+                              value.stopReset();
                             },
                             child: Container(
                               height: 50,
@@ -106,7 +106,7 @@ class _MyTimerProState extends State<MyTimerPro> {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      context.read<Timerprovider>().timerStart();
+                      context.read<StopWatchProvider>().startWatch();
                     },
                     child: Container(
                       width: 100,
@@ -126,7 +126,7 @@ class _MyTimerProState extends State<MyTimerPro> {
 
                   GestureDetector(
                     onTap: () {
-                      context.read<Timerprovider>().pauseTimer();
+                      context.read<StopWatchProvider>().stopPause();
                     },
                     child: Container(
                       width: 100,
@@ -146,7 +146,7 @@ class _MyTimerProState extends State<MyTimerPro> {
 
                   GestureDetector(
                     onTap: () {
-                      context.read<Timerprovider>().resumeTimer();
+                      context.read<StopWatchProvider>().stopResume();
                     },
                     child: Container(
                       width: 100,
@@ -164,16 +164,6 @@ class _MyTimerProState extends State<MyTimerPro> {
                     ),
                   ),
                 ],
-              ),
-
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => TimerScreen()),
-                  );
-                },
-                child: Text("Set Timer"),
               ),
             ],
           ),

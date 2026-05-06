@@ -2,7 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:student_managemnet/Provider/TimerProvider.dart';
+import 'package:student_managemnet/Provider/StopWatch_Provider.dart';
+import 'package:student_managemnet/Provider/Timer_Provider.dart';
 import 'package:student_managemnet/Screens/StopWatch.dart';
 
 class TimerScreen extends StatefulWidget {
@@ -23,7 +24,7 @@ class _TimerScreenState extends State<TimerScreen> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Consumer<Timerprovider>(
+          Consumer<TimerProvider>(
             builder: (context, value, child) {
               return Text(
                 "${value.getHour.toString().padLeft(2, "0")}:${value.getMint.toString().padLeft(2, "0")}:${value.getSecondes.toString().padLeft(2, "0")}",
@@ -89,12 +90,12 @@ class _TimerScreenState extends State<TimerScreen> {
 
                   ElevatedButton(
                     onPressed: () {
-                      context.read<Timerprovider>().setTimer(
+                      context.read<TimerProvider>().setTimer(
                         int.tryParse(seconds.text) ?? 0,
                         int.tryParse(min.text) ?? 0,
                         int.tryParse(hour.text) ?? 0,
                       );
-                      context.read<Timerprovider>().timerStart();
+                      context.read<TimerProvider>().startTimer();
                       Navigator.pop(context);
                     },
                     child: Text("SetTimer"),
