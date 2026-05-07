@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:student_managemnet/Screens/CounterApp.dart';
 import 'package:student_managemnet/Screens/StopWatch.dart';
 import 'package:student_managemnet/Screens/TimerPro.dart';
+import 'package:student_managemnet/Screens/timerProMax.dart';
 
 class BottomeNavgationCounterPro extends StatefulWidget {
   const BottomeNavgationCounterPro({super.key});
@@ -14,7 +15,7 @@ class BottomeNavgationCounterPro extends StatefulWidget {
 class _BottomeNavgationCounterProState
     extends State<BottomeNavgationCounterPro> {
   int myIndex = 0;
-  List<Widget> Screens = [CounterApp(), Timerpro(), StopWatch()];
+  List<Widget> Screens = [TimerProMax(), Timerpro(), StopWatch()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(

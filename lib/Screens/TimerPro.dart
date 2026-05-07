@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:student_managemnet/Provider/StopWatch_Provider.dart';
@@ -83,7 +84,7 @@ class Timerpro extends StatelessWidget {
                       boxShadow: [
                         BoxShadow(
                           color: value.containerColor.withOpacity(1),
-                          offset: Offset(4, 8),
+                          offset: Offset(2, 2),
                           blurRadius: 20,
                           spreadRadius: 5,
                         ),
@@ -92,24 +93,48 @@ class Timerpro extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
-                          '',
-                          style: GoogleFonts.inter(
-                            color: Colors.grey,
-                            fontSize: 16,
-                          ),
-                        ),
                         SizedBox(height: 100),
                         Text(
                           "${value.getHour.toString().padLeft(2, "0")}:${value.getMint.toString().padLeft(2, "0")}:${value.getSecondes.toString().padLeft(2, "0")}",
                           style: GoogleFonts.inter(
-                            color: Colors.grey.shade700,
-                            fontSize: 40,
+                            color: value.containerColor,
+                            fontSize: 44,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(top: 80),
+                          padding: const EdgeInsets.only(left: 65),
+                          child: Row(
+                            children: [
+                              Text(
+                                "HH:",
+                                style: GoogleFonts.inter(
+                                  color: Colors.grey.shade700,
+                                  fontSize: 38,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                "MM:",
+                                style: GoogleFonts.inter(
+                                  color: Colors.grey.shade700,
+                                  fontSize: 38,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                "SS",
+                                style: GoogleFonts.inter(
+                                  color: Colors.grey.shade700,
+                                  fontSize: 38,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 81),
                           child: GestureDetector(
                             onTap: () {
                               context.read<StopWatchProvider>().stopReset();
@@ -122,7 +147,7 @@ class Timerpro extends StatelessWidget {
                                   topLeft: Radius.circular(2000),
                                   topRight: Radius.circular(2000),
                                 ),
-                                color: Colors.blueGrey,
+                                color: value.containerColor,
                               ),
                               height: 50,
                               width: 230,
@@ -180,11 +205,13 @@ class Timerpro extends StatelessWidget {
                             ],
                           ),
                           child: Center(
-                            child: Text(
-                              "Start Timer",
-                              style: GoogleFonts.inter(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
+                            child: Container(
+                              child: Text(
+                                "Start Timer",
+                                style: GoogleFonts.inter(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
                           ),
@@ -298,14 +325,43 @@ class Timerpro extends StatelessWidget {
                   ),
                 ),
               ),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => TimerScreen()),
-                  );
-                },
-                child: Text("Set Timer"),
+              // ElevatedButton(
+              //   onPressed: () {
+              //     Navigator.push(
+              //       context,
+              //       MaterialPageRoute(builder: (context) => TimerScreen()),
+              //     );
+              //   },
+              //   child: Text("Set Timer"),
+              // ),
+              Container(
+                height: 60,
+                width: 300,
+
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.orange,
+                ),
+                child: Row(
+                  children: [
+                    Container(
+                      height: 45,
+                      width: 45,
+
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(100),
+                        color: Colors.grey.shade200,
+                      ),
+                      child: Center(
+                        child: FaIcon(
+                          FontAwesomeIcons.stopwatch,
+                          color: Colors.blue.shade400,
+                        ),
+                      ),
+                    ),
+                    Text("Adjust Timer", style: GoogleFonts.poppins()),
+                  ],
+                ),
               ),
             ],
           ),

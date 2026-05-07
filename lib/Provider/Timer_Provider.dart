@@ -7,7 +7,7 @@ class TimerProvider with ChangeNotifier {
   int _secodes = 0;
   bool isRunning = true;
   Timer? timer;
-  Color containerColor = Colors.white;
+  Color containerColor = Colors.blueGrey;
   int totalSeconds = 0;
 
   int get getHour => _hour;
