@@ -98,13 +98,13 @@ class TimerProvider with ChangeNotifier {
     if (percentage > 0) {
       containerColor = Colors.red.withOpacity(1);
       if (percentage > 10) {
-        containerColor = Colors.red.withOpacity(0.8);
+        containerColor = Colors.red;
         if (percentage > 20) {
-          containerColor = Colors.red.withOpacity(0.6);
+          containerColor = Colors.red;
           if (percentage > 40) {
-            containerColor = Colors.red.withOpacity(0.4);
+            containerColor = Colors.red;
             if (percentage > 49) {
-              containerColor = Colors.red.withOpacity(0.2);
+              containerColor = Colors.red;
               if (percentage > 50) {
                 containerColor = Colors.green;
               }
@@ -117,7 +117,7 @@ class TimerProvider with ChangeNotifier {
       } else
         containerColor = Colors.red;
     } else
-      containerColor = Colors.grey;
+      containerColor = Colors.grey.shade500;
     notifyListeners();
   }
 }

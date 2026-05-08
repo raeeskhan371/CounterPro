@@ -41,12 +41,17 @@ class Timerpro extends StatelessWidget {
                     ),
                   ),
 
-                  Text(
-                    "Timer Pro",
-                    style: GoogleFonts.poppins(
-                      fontSize: 30,
-                      fontWeight: FontWeight.w500,
-                    ),
+                  Column(
+                    children: [
+                      Text(
+                        "Timer Pro",
+                        style: GoogleFonts.poppins(
+                          fontSize: 30,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      Text("Stay focused, stay productive."),
+                    ],
                   ),
 
                   Container(
@@ -91,10 +96,32 @@ class Timerpro extends StatelessWidget {
                       ],
                     ),
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        SizedBox(height: 50),
-                        Container(height: 50, width: 50, color: Colors.grey),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 30),
+                          child: Container(
+                            height: 50,
+                            width: 50,
+
+                            decoration: BoxDecoration(
+                              color: Colors.grey.shade100,
+                              borderRadius: BorderRadius.circular(100),
+                            ),
+                            child: Center(
+                              child: FaIcon(
+                                FontAwesomeIcons.clock,
+                                color: Colors.blue,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Text(
+                          "Timer",
+                          style: GoogleFonts.poppins(
+                            color: Colors.grey.shade700,
+                          ),
+                        ),
+                        SizedBox(height: 10),
                         Text(
                           "${value.getHour.toString().padLeft(2, "0")}:${value.getMint.toString().padLeft(2, "0")}:${value.getSecondes.toString().padLeft(2, "0")}",
                           style: GoogleFonts.inter(
@@ -134,46 +161,6 @@ class Timerpro extends StatelessWidget {
                                 ),
                               ),
                             ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 81),
-                          child: GestureDetector(
-                            onTap: () {
-                              context.read<StopWatchProvider>().stopReset();
-                            },
-                            child: Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.only(
-                                  bottomRight: Radius.circular(20000),
-                                  bottomLeft: Radius.circular(20000),
-                                  topLeft: Radius.circular(2000),
-                                  topRight: Radius.circular(2000),
-                                ),
-                                color: value.containerColor,
-                              ),
-                              height: 50,
-                              width: 230,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    "Reset",
-                                    style: GoogleFonts.inter(
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 30,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                  SizedBox(width: 10),
-                                  Icon(
-                                    Icons.refresh,
-                                    color: Colors.white,
-                                    size: 30,
-                                  ),
-                                ],
-                              ),
-                            ),
                           ),
                         ),
                       ],
@@ -280,12 +267,7 @@ class Timerpro extends StatelessWidget {
               SizedBox(height: 50),
               // SetTimer Button
               GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => TimerScreen()),
-                  );
-                },
+                onTap: () {},
                 child: Container(
                   height: 60,
                   width: 340,
@@ -303,36 +285,68 @@ class Timerpro extends StatelessWidget {
                     ],
                   ),
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      SizedBox(width: 10),
-                      Container(
-                        height: 40,
-                        width: 40,
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => TimerScreen(),
+                            ),
+                          );
+                        },
+                        child: Container(
+                          height: 45,
+                          width: 150,
 
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(100),
-                          color: Colors.grey.shade200,
-                        ),
-                        child: Center(
-                          child: FaIcon(
-                            FontAwesomeIcons.stopwatch,
-                            color: Colors.blue.shade400,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(100),
+                            color: Colors.blue,
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              FaIcon(
+                                FontAwesomeIcons.stopwatch,
+                                color: Colors.white,
+                              ),
+
+                              Text(
+                                "Set Timer",
+                                style: GoogleFonts.poppins(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 16,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ),
-                      SizedBox(width: 10),
-                      Text(
-                        "Set Timer",
-                        style: GoogleFonts.poppins(
-                          color: Colors.blue.shade400,
-                          fontWeight: FontWeight.w600,
+                      Container(
+                        height: 45,
+                        width: 150,
+
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(100),
+                          color: Colors.redAccent,
                         ),
-                      ),
-                      SizedBox(width: 180),
-                      Icon(
-                        Icons.arrow_forward_ios,
-                        color: Colors.blue,
-                        size: 15,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Icon(Icons.refresh_outlined, color: Colors.white),
+
+                            Text(
+                              "Reset Timer",
+                              style: GoogleFonts.poppins(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 16,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
