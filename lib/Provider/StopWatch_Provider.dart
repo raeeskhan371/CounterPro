@@ -35,7 +35,7 @@ class StopWatchProvider with ChangeNotifier {
         _mint++;
       } else if (_mint == 59) {
         _secodes = 0;
-        _mint == 0;
+        _mint = 0;
         _hour++;
       }
       Color containerColor = Colors.green;
@@ -46,6 +46,7 @@ class StopWatchProvider with ChangeNotifier {
 
   void stopPause() {
     timer!.cancel();
+    containerColor = Colors.grey;
     isRunning = false;
   }
 

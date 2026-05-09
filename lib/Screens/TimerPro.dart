@@ -7,9 +7,14 @@ import 'package:student_managemnet/Provider/StopWatch_Provider.dart';
 import 'package:student_managemnet/Provider/Timer_Provider.dart';
 import 'package:student_managemnet/Screens/Set_Timer.dart';
 
-class Timerpro extends StatelessWidget {
+class Timerpro extends StatefulWidget {
   const Timerpro({super.key});
 
+  @override
+  State<Timerpro> createState() => _TimerproState();
+}
+
+class _TimerproState extends State<Timerpro> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

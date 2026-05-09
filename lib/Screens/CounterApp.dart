@@ -190,7 +190,12 @@ class _CounterAppState extends State<CounterApp> {
                   // Reset Button
                   GestureDetector(
                     onTap: () {
-                      showAboutDialog(context: context);
+                      showResetDialouge(
+                        context,
+                        onReset: () {
+                          context.read<CounterProvider>().reset();
+                        },
+                      );
                     },
                     child: Column(
                       children: [
