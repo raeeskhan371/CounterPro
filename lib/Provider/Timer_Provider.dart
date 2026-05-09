@@ -87,6 +87,7 @@ class TimerProvider with ChangeNotifier {
     _hour = 0;
     _mint = 0;
     _secodes = 0;
+    containerColor = Colors.grey.shade500;
 
     isRunning = false;
     notifyListeners();

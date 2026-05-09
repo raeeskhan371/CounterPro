@@ -3,7 +3,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:student_managemnet/Provider/Counter_Provider.dart';
 
-void showResetDialouge(BuildContext context) {
+void showResetDialouge(
+  BuildContext context, {
+  required VoidCallbackAction onReset,
+}) {
   showDialog(
     context: context,
     builder: (context) {
@@ -82,8 +85,7 @@ void showResetDialouge(BuildContext context) {
                     ),
                     InkWell(
                       onTap: () {
-                        context.read<CounterProvider>().reset();
-                        Navigator.pop(context);
+                        onReset() {}
                       },
                       child: Container(
                         height: 40,

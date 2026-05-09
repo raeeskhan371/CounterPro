@@ -175,90 +175,105 @@ class Timerpro extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   // Start Timer Button
-                  Container(
-                    height: 80,
-                    width: 100,
-                    decoration: BoxDecoration(
-                      color: Colors.blue.shade100,
-                      borderRadius: BorderRadius.circular(10),
-                      boxShadow: [BoxShadow(color: Colors.black)],
-                      border: Border.all(color: Colors.blue.shade200),
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        FaIcon(
-                          FontAwesomeIcons.play,
-                          color: Colors.blueAccent.shade700,
-                        ),
-                        SizedBox(height: 10),
-                        Text(
-                          "Start Timer",
-                          style: GoogleFonts.inter(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w700,
+                  GestureDetector(
+                    onTap: () {
+                      context.read<TimerProvider>().startTimer();
+                    },
+                    child: Container(
+                      height: 80,
+                      width: 100,
+                      decoration: BoxDecoration(
+                        color: Colors.blue.shade100,
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: [BoxShadow(color: Colors.black)],
+                        border: Border.all(color: Colors.blue.shade200),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          FaIcon(
+                            FontAwesomeIcons.play,
                             color: Colors.blueAccent.shade700,
                           ),
-                        ),
-                      ],
+                          SizedBox(height: 10),
+                          Text(
+                            "Start Timer",
+                            style: GoogleFonts.inter(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w700,
+                              color: Colors.blueAccent.shade700,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                   // PauseTimer Button
-                  Container(
-                    height: 80,
-                    width: 100,
-                    decoration: BoxDecoration(
-                      color: Colors.red.shade50,
-                      borderRadius: BorderRadius.circular(10),
-                      boxShadow: [BoxShadow(color: Colors.black)],
-                      border: Border.all(color: Colors.red.shade200),
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        FaIcon(
-                          FontAwesomeIcons.pause,
-                          color: Colors.red.shade700,
-                        ),
-                        SizedBox(height: 10),
-                        Text(
-                          "Pause Timer",
-                          style: GoogleFonts.inter(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w700,
-                            color: Colors.redAccent.shade700,
+                  GestureDetector(
+                    onTap: () {
+                      context.read<TimerProvider>().pauseTimer();
+                    },
+                    child: Container(
+                      height: 80,
+                      width: 100,
+                      decoration: BoxDecoration(
+                        color: Colors.red.shade50,
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: [BoxShadow(color: Colors.black)],
+                        border: Border.all(color: Colors.red.shade200),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          FaIcon(
+                            FontAwesomeIcons.pause,
+                            color: Colors.red.shade700,
                           ),
-                        ),
-                      ],
+                          SizedBox(height: 10),
+                          Text(
+                            "Pause Timer",
+                            style: GoogleFonts.inter(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w700,
+                              color: Colors.redAccent.shade700,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                   //Resume Timer
-                  Container(
-                    height: 80,
-                    width: 100,
-                    decoration: BoxDecoration(
-                      color: Colors.green.shade100,
-                      borderRadius: BorderRadius.circular(10),
+                  GestureDetector(
+                    onTap: () {
+                      context.read<TimerProvider>().resumeTimer();
+                    },
+                    child: Container(
+                      height: 80,
+                      width: 100,
+                      decoration: BoxDecoration(
+                        color: Colors.green.shade100,
+                        borderRadius: BorderRadius.circular(10),
 
-                      border: Border.all(color: Colors.green.shade200),
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        FaIcon(
-                          FontAwesomeIcons.circlePlay,
-                          color: Colors.green.shade700,
-                        ),
-                        SizedBox(height: 10),
-                        Text(
-                          "Resume Timer",
-                          style: GoogleFonts.inter(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w700,
+                        border: Border.all(color: Colors.green.shade200),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          FaIcon(
+                            FontAwesomeIcons.circlePlay,
                             color: Colors.green.shade700,
                           ),
-                        ),
-                      ],
+                          SizedBox(height: 10),
+                          Text(
+                            "Resume Timer",
+                            style: GoogleFonts.inter(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w700,
+                              color: Colors.green.shade700,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ],
@@ -324,28 +339,34 @@ class Timerpro extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Container(
-                        height: 45,
-                        width: 150,
+                      GestureDetector(
+                        onTap: () {
+                          showAboutDialog(context: context);
+                          context.read<TimerProvider>().resetTimer();
+                        },
+                        child: Container(
+                          height: 45,
+                          width: 150,
 
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(100),
-                          color: Colors.redAccent,
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Icon(Icons.refresh_outlined, color: Colors.white),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(100),
+                            color: Colors.redAccent,
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Icon(Icons.refresh_outlined, color: Colors.white),
 
-                            Text(
-                              "Reset Timer",
-                              style: GoogleFonts.poppins(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 16,
+                              Text(
+                                "Reset Timer",
+                                style: GoogleFonts.poppins(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 16,
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ],
