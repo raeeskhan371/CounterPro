@@ -91,6 +91,7 @@ class TimerProvider with ChangeNotifier {
 
     isRunning = false;
     notifyListeners();
+    //
   }
 
   void timerColor() {
