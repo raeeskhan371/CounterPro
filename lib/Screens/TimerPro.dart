@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:student_managemnet/Components/AlertBox.dart';
 import 'package:student_managemnet/Provider/StopWatch_Provider.dart';
 import 'package:student_managemnet/Provider/Timer_Provider.dart';
 import 'package:student_managemnet/Screens/Set_Timer.dart';
@@ -346,8 +347,12 @@ class _TimerproState extends State<Timerpro> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          showAboutDialog(context: context);
-                          context.read<TimerProvider>().resetTimer();
+                          showResetDialouge(
+                            context,
+                            onReset: () {
+                              context.read<TimerProvider>().resetTimer();
+                            },
+                          );
                         },
                         child: Container(
                           height: 45,
