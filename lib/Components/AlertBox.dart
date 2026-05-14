@@ -9,11 +9,12 @@ void showResetDialouge(BuildContext context, {required VoidCallback onReset}) {
     builder: (context) {
       return Dialog(
         child: Container(
-          height: 220,
+          height: 230,
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(30),
           ),
+          // //
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
